@@ -403,11 +403,16 @@ double DRFSorter::calculateShare(const string& name)
 
 void DRFSorter::resetAllocations()
 {
+  set<Client, DRFComparator> temp;
   set<Client, DRFComparator>::iterator it;
   for (it = clients.begin(); it != clients.end(); it++) {
+    Client client(*it);
     // Normalize 'allocations' by resetting them to 0
-    it->allocations = 0;
+    client.allocations = 0;
+    
+    temp.insert(client);
   }
+  clients = temp;
   return;  
 }
 
