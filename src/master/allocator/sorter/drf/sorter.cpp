@@ -413,6 +413,7 @@ void DRFSorter::resetAllocations()
     temp.insert(client);
   }
   clients = temp;
+  LOG(INFO) << "Reset allocaltions counter to 0";
   return;  
 }
 
