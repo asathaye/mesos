@@ -126,6 +126,8 @@ private:
   // it exists in this Sorter.
   std::set<Client, DRFComparator>::iterator find(const std::string& name);
 
+  // Reset allocations for all clients to normalize the value
+  void resetAllocations();
   // If true, sort() will recalculate all shares.
   bool dirty;
 
