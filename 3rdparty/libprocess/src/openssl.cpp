@@ -746,7 +746,9 @@ Try<Nothing> verify(
               sizeof(text)) > 0) {
         VLOG(2) << "Matching common name: " << text;
 
-        if (hostname.get() != text) {
+        //if (hostname.get() != text) {
+        int match = X509_check_host(cert, hostname.get().c_str(), hostname.get().length(), 0, NULL);
+        if (match == 0) {
           X509_free(cert);
           return Error(
             "Presented Certificate Name: " + stringify(text) +
